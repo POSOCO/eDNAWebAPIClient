@@ -5,8 +5,18 @@
 <body>
 
 <h2>eDNA Testing client</h2>
+<input type="text" id="serverBaseAddressInput" value="http://localhost:62448" style="width: 300px">
 
 <table>
+    <tr>
+        <td><label for="historyType">historyType</label></td>
+        <td>
+            <select name="historyType" id="historyType">
+                <option value="real">real</option>
+                <option value="history">history</option>
+            </select>
+        </td>
+    </tr>
     <tr>
         <td><label for="pnt">Point Id</label></td>
         <td><input type="text" id="pnt" style="width: 200px" value="WRLDC.PHASOR.WRDC0783"></td>
@@ -23,18 +33,24 @@
         <td><label for="secs">Period in seconds</label></td>
         <td><input type="number" id="secs" value="60"></td>
     </tr>
+    <tr>
+        <td><label for="type">Period in seconds</label></td>
+        <td><input type="text" id="type" value="snap"></td>
+    </tr>
 </table>
 <button id="createUrlButton" onclick="createUrl()">Create URL</button>
 <br><br>
-<input type="text" id="bakedUrl" value="http://localhost:6544/api/values" style="width: 300px">
+<input type="text" id="bakedUrl" value="http://localhost:62448/api/values" style="width: 90%">
 <br>
 <button id="fetchValuesButton" onclick="fetchEdnaValues()">Fetch Values</button>
 
-<br><br>
+<h2 style="margin-left: 2%">Output</h2>
 
-<h2>Output</h2>
-<div id="console" style="height: 300px; min-width: 100px; overflow: auto;border: 1px solid black"></div>
+<div id="console"
+     style="height: 300px; margin-right: 10%;margin-left: 2%; overflow: auto;border: 1px solid black"></div>
+<button onclick="clearConsole()" id="clearConsoleButton" style="margin-left: 2%">ClearConsole</button>
 <script src="./libs/js/jquery.min.js"></script>
+<script src="consoleFunctions.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
