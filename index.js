@@ -1,3 +1,5 @@
+var cacheData_ = null;
+
 function fetchEdnaValues() {
     $.ajax({
         //fetch revisions data from sever
@@ -5,9 +7,11 @@ function fetchEdnaValues() {
         type: "GET",
         dataType: "json",
         success: function (data) {
+            cacheData_ = data;
             WriteLineConsole(JSON.stringify(data));
         },
         error: function (jqXHR, textStatus, errorThrown) {
+            WriteLineConsole(JSON.stringify(jqXHR));
             console.log(textStatus, errorThrown);
         }
     });
@@ -28,4 +32,20 @@ function createUrl() {
         url = serverBaseAddress + "/api/values/" + historyType + "?pnt=" + pnt + "&strtime=" + strtime + "&endtime=" + endtime + "&secs=" + secs + "&type=" + type;
     }
     document.getElementById("bakedUrl").value = url;
+}
+
+function plotData(){
+    var data = cacheData_;
+    var plotData = [
+        {
+            x: [],
+            y: [],
+            type: 'scatter'
+        }
+    ];
+    for(var i=0;i<data.length;i++){
+        plotData[0].x[i] = new Date(data[i].timestamp);
+        plotData[0].y[i] = data[i].dval;
+    }
+    Plotly.newPlot('plotDiv', plotData);
 }

@@ -43,13 +43,16 @@
 <input type="text" id="bakedUrl" value="http://localhost:62448/api/values" style="width: 90%">
 <br>
 <button id="fetchValuesButton" onclick="fetchEdnaValues()">Fetch Values</button>
+<button id="plotValuesButton" onclick="plotData()">Plot Data</button>
 
 <h2 style="margin-left: 2%">Output</h2>
 
 <div id="console"
      style="height: 300px; margin-right: 10%;margin-left: 2%; overflow: auto;border: 1px solid black"></div>
 <button onclick="clearConsole()" id="clearConsoleButton" style="margin-left: 2%">ClearConsole</button>
+<div id="plotDiv" style="width: 480px; height: 400px;"><!-- Plotly chart will be drawn inside this DIV --></div>
 <script src="./libs/js/jquery.min.js"></script>
+<script src="./libs/js/plotly-latest.min.js"></script>
 <script src="consoleFunctions.js"></script>
 <script src="index.js"></script>
 </body>
