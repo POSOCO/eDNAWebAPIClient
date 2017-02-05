@@ -45,7 +45,7 @@ function plotData(){
     ];
     for(var i=0;i<data.length;i++){
         //handling IST (= GMT+5:30) for the sake of plotting
-        plotData[0].x[i] = new Date(data[i].timestamp) - 5.5*60*60*1000;
+        plotData[0].x[i] = new Date(data[i].timestamp);
         plotData[0].y[i] = data[i].dval;
     }
     Plotly.newPlot('plotDiv', plotData);
